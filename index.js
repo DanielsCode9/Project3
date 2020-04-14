@@ -22,9 +22,10 @@ app.set("view engine", "ejs");
 //takes everything from the table and gives it to the ejs file
 //needs to be updated for this project
 app.get("/", (req, res) => {
-    knex.select("CustID", "CustFirstName", "CustLastName", "CustEmail").from("Customer").orderBy("CustID").then(customer => {
+    knex.select("SongID", "SongName", "ArtistID", "YearRelease").from("Songs").orderBy("SongID").then(MusicLibrary => {
         res.render("index", {
-            custdata: customer
+            startOver: MusicLibrary
+            custdata: MusicLibrary
         });
     }).catch(err => {
         console.log(err);
@@ -35,14 +36,12 @@ app.get("/", (req, res) => {
 });
 
 //needs to be updated for this project
-app.post('/DeleteStudent/:id'(req, res) => {
-    knex('custdata').where('CustID', req.params.id).del().then(custdata => {
+app.post('/startover/:id'(req, res) => {
+    knex('songs').where('SongID', req.params.id).del().then(songs => {
         res.redirect('/');
     }).catch(err => {
         console.log(err);
-        res.status(500).json({
-            err
-        });
+        res.status(500).json({err});
     })
 });
 
