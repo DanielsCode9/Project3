@@ -36,47 +36,47 @@ app.get("/", (req, res) => {
 });
 
 //needs to be updated for this project
-// app.post('/startover/:id'(req, res) => {
-//     knex('songs').where('SongID', req.params.id).del().then(songs => {
-//         res.redirect('/');
-//     }).catch(err => {
-//         console.log(err);
-//         res.status(500).json({err});
-//     })
-// });
+app.post("/deleteSong/:id", (req, res) => {
+    knex("Songs").where("SongID", req.params.id).del().then(songs =>{
+        console.log(req.params.id);
+        res.redirect("/");
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+}); 
 
-//needs to be updated for this project
-// app.get('/addStudent', (req, res) => {
-//     res.render('addStudent');
-// });
+app.get('/addsong', (req, res) => {
+    res.render('addsong');
+});
 
-// //needs to be updated for this project
-// app.post('/addStudent', (req, res) => {
-//     console.log(req.body);
-//     console.log(req.body.firstName);
-//     knex(student).insert(req.body).then(student => {
-//         res.redirect('/');
-//     })
-// });
+app.post("/addsong",(req,res) =>{
+    console.log(req.body);
+    console.log(req.body.SongName);
+    knex("Songs").insert(req.body).then(songs =>{
+        res.redirect("/")
+    })
+});
 
-// //needs to be updated for this project
-// app.get('/updateStudent', (req, res) => {
-//     res.render('updateStudent');
-// });
+app.get('/editSong', (req, res) => {
+    res.render('editSong');
+});
 
-// //needs to be updated for this project
-// app.post('/updateStudent', (req, res) => {
-//     console.log(req.body.FirstName);
-//     knex('student').where({
-//         StudentID: req.body.StudentID
-//     }).update({
-//         FirstName: req.body.FirstName,
-//         LastName: req.body.LastName,
-//         Email: req.body.Email
-//     }).then(student => {
-//         res.redirect('/');
-//     });
-// });
+app.post('/editSong', (req, res) => {
+    knex('Songs').where({SongID: req.body.SongID
+    }).update({
+        SongName: req.body.SongName,
+        ArtistID: req.body.ArtistID,
+        YearReleased: req.body.YearReleased
+    }).then(songs => {
+        res.redirect('/');
+    });
+});
+
+app.get("/startover/", (req, res) =>{
+    res.render("startover")
+});
+
 
 // //needs to be updated for this project
 // app.post('/addBatch', (req, res) => {
@@ -84,25 +84,13 @@ app.get("/", (req, res) => {
 //         [
 //             {firstName: "Tony", LastName: "Stark", Email: "Y"},
 //             {firstName: "Steve", LastName: "Rogers", Email: "Y"},
-//             {firstName: "Natsha", LastName: "Romeoa", Email: "N"},
+//            {firstName: "Natsha", LastName: "Romeoa", Email: "N"},
 //             {firstName: "Carol", LastName: "Danvers", Email: "N"},
 //         ]
 //     ).then(student => {
 //         res.redirect('/');
 //     });
 // });
-
-//needs to be updated for this project
-app.post("/deleteSong/:id", (req, res) => {
-    knex("Songs").where("SongID", req.params.id).del().then(songs =>{
-        res.render("index");
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err});
-    });
-}); 
-
-
 
 app.listen(port, function () {
     console.log("Music Library listening started");

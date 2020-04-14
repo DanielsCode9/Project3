@@ -15,6 +15,7 @@
                 <th>SongName</th>
                 <th>ArtistID</th>
                 <th>YearReleased</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -23,7 +24,7 @@
             <tr>
                 <td>
                     <form action="/deleteSong/<%= MusicLibrary[iCount].SongID %>" method="post">
-                        <input type="submit" name="delete" value="delete">
+                        <input type="submit" name="delete" value="Delete">
                     </form>
                     
                 </td>
@@ -31,12 +32,19 @@
                 <td><%= MusicLibrary[iCount].SongName %></td>
                 <td><%= MusicLibrary[iCount].ArtistID %></td>
                 <td><%= MusicLibrary[iCount].YearReleased %></td>
+                <td>
+                    <form action="/editsong/<%= MusicLibrary[iCount].SongID%>" method="post">
+                        <input type="submit" name="edit" value="Edit">
+                    </form>
+                </td>
             </tr>
             <% }%>
-            
-
         </tbody>
     </table>
+    <br><br>
+    <form action = "/startover/" method="post">
+        <input type="submit" name="startOver" value="Start Over">
+    </form>
 </body>
 
 </html>

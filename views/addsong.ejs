@@ -4,20 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Student</title>
+    <title>Add Song</title>
 </head>
 
 <body>
-    <form action="/addStudent" method="post">
-        <label for="FirstName">Enter First Name:</label>
-        <input id="FirstName" type="text" name="FirstName">
+    <form action="/addsong" method="post">
+        <label for="songName">Enter Song Name:</label>
+        <input id="songName" type="text" name="songName">
         <br>
-        <label for="LastName">Enter Last Name:</label>
-        <input id="LastName" type="text" name="LastName">
+        <label for="artistID">Enter Artist Name:</label>
+        <input id="artistID" type="text" name="artistID">
         <br>
-        <label for="Email">Receive Emails? </label>
+        <label for="yearReleased">Enter Year Released:</label>
+        <input id="yearReleased" type="text" name="yearReleased">
+        <br>
+        <!--<label for="Email">Receive Emails? </label>
         <input id="Email" type="checkbox" name="Email" value="Y" checked>
-        <br>
+        <br>-->
         <input type="submit" value="Save">
     </form>
 
