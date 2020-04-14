@@ -33,7 +33,7 @@
                 <td><%= MusicLibrary[iCount].ArtistID %></td>
                 <td><%= MusicLibrary[iCount].YearReleased %></td>
                 <td>
-                    <form action="/editsong/<%= MusicLibrary[iCount].SongID%>" method="post">
+                    <form action="/editsong" method="get">
                         <input type="submit" name="edit" value="Edit">
                     </form>
                 </td>
@@ -42,11 +42,11 @@
         </tbody>
     </table>
     <br><br>
-    <form action = "/addsong/" method="post">
-        <input type="submit" name="startOver" value="Start Over">
+    <form action="/addsong" method="get">
+        <input type="submit" name="addSong" value="Add Song">
     </form>
 
-    <form action="/startover/" method="post">
+    <form action="/startover" method="post">
         <input type="submit" name="startOver" value="Start Over">
     </form>
 </body>

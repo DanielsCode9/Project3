@@ -58,13 +58,17 @@ app.post("/addsong",(req,res) =>{
     })
 });
 
-app.get('/editSong', (req, res) => {
-    res.render('editSong');
+app.get("/startover", (req, res) =>{
+    res.redirect("/startover")
 });
 
-app.post('/editSong', (req, res) => {
-    knex('Songs').where({SongID: req.body.SongID
-    }).update({
+/*app.get('/editsong', (req, res) => {
+    res.render('editsong');
+});
+
+
+app.post('/editsong/:id', (req, res) => {
+    knex('Songs').where({SongID: req.body.SongID}).update({
         SongName: req.body.SongName,
         ArtistID: req.body.ArtistID,
         YearReleased: req.body.YearReleased
@@ -73,24 +77,20 @@ app.post('/editSong', (req, res) => {
     });
 });
 
-app.get("/startover/", (req, res) =>{
-    res.render("startover")
-});
 
 
-// //needs to be updated for this project
-// app.post('/addBatch', (req, res) => {
-//     knex('Student').insert(
-//         [
-//             {firstName: "Tony", LastName: "Stark", Email: "Y"},
-//             {firstName: "Steve", LastName: "Rogers", Email: "Y"},
-//            {firstName: "Natsha", LastName: "Romeoa", Email: "N"},
-//             {firstName: "Carol", LastName: "Danvers", Email: "N"},
-//         ]
-//     ).then(student => {
-//         res.redirect('/');
-//     });
-// });
+app.post('/addBatch', (req, res) => {
+    knex('Student').insert(
+        [
+            {firstName: "Tony", LastName: "Stark", Email: "Y"},
+            {firstName: "Steve", LastName: "Rogers", Email: "Y"},
+           {firstName: "Natsha", LastName: "Romeoa", Email: "N"},
+            {firstName: "Carol", LastName: "Danvers", Email: "N"},
+        ]
+    ).then(student => {
+        res.redirect('/');
+    });
+});*/
 
 app.listen(port, function () {
     console.log("Music Library listening started");
