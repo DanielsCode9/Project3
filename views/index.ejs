@@ -2,11 +2,37 @@
 <html lang="en">
 
 <head>
-    <title>Document</title>
+    <title>Music Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/bulma/0.7.2/css/bulma.css" />
 </head>
 
 <body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SongID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Receive Email</th>
+            </tr>
+        </thead>
 
+        <tbody>
+            <% for (var iCount = 0; iCount < custdata.length; iCount++) {%>
+            <tr>
+                <td>
+                    <form action=/DeleteStudent/<%= student[i].StudentID %>" method="post>
+                        <input type="submit" name="delete">
+                    </form>
+                </td>
+                <td><%= custdata[iCount].CustID %></td>
+                <td><%= custdata[iCount].CustFirstName %></td>
+                <td><%= custdata[iCount].CustLastName %></td>
+                <td><%= custdata[iCount].CustEmail %></td>
+            </tr>
+            <% }%>
+        </tbody>
+    </table>
 </body>
 
 </html>
