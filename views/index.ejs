@@ -26,7 +26,7 @@
                     <form action="/deleteSong/<%= MusicLibrary[iCount].SongID %>" method="post">
                         <input type="submit" name="delete" value="Delete">
                     </form>
-                    
+
                 </td>
                 <td><%= MusicLibrary[iCount].SongID %></td>
                 <td><%= MusicLibrary[iCount].SongName %></td>
@@ -42,7 +42,11 @@
         </tbody>
     </table>
     <br><br>
-    <form action = "/startover/" method="post">
+    <form action = "/addsong/" method="post">
+        <input type="submit" name="startOver" value="Start Over">
+    </form>
+
+    <form action="/startover/" method="post">
         <input type="submit" name="startOver" value="Start Over">
     </form>
 </body>
