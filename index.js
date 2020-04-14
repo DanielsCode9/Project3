@@ -6,7 +6,7 @@ const port = 3000;
 const knex = require("knex")({
     client: 'sqlite3',
     connection: {
-        filename: "musicinfo.db"
+        filename: "MusicLibrary.db"
     },
     useNullAsDefault: true
 });
