@@ -1,0 +1,22 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "My First node app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielsCode9/Project3.git"
+  },
+  "author": "Team 9- Zach Daniels, Caroline Hickey, Max Haines, Audrey Chigarira , Kethura Vennamala, Jadan Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielsCode9/Project3/issues"
+  },
+  "homepage": "https://github.com/DanielsCode9/Project3#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
