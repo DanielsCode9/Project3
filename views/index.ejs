@@ -10,27 +10,31 @@
     <table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>SongID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Receive Email</th>
+                <th>SongName</th>
+                <th>ArtistID</th>
+                <th>YearReleased</th>
             </tr>
         </thead>
 
         <tbody>
-            <% for (var iCount = 0; iCount < custdata.length; iCount++) {%>
+            <% for (var iCount = 0; iCount < MusicLibrary.length; iCount++) {%>
             <tr>
                 <td>
-                    <form action=/DeleteStudent/<%= student[i].StudentID %>" method="post>
-                        <input type="submit" name="delete">
+                    <form action="/deleteSong/<%= MusicLibrary[iCount].SongID %>" method="post">
+                        <input type="submit" name="delete" value="delete">
                     </form>
+                    
                 </td>
-                <td><%= custdata[iCount].CustID %></td>
-                <td><%= custdata[iCount].CustFirstName %></td>
-                <td><%= custdata[iCount].CustLastName %></td>
-                <td><%= custdata[iCount].CustEmail %></td>
+                <td><%= MusicLibrary[iCount].SongID %></td>
+                <td><%= MusicLibrary[iCount].SongName %></td>
+                <td><%= MusicLibrary[iCount].ArtistID %></td>
+                <td><%= MusicLibrary[iCount].YearReleased %></td>
             </tr>
             <% }%>
+            
+
         </tbody>
     </table>
 </body>
