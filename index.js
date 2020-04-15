@@ -54,35 +54,45 @@ app.post("/addsong",(req,res) =>{
     console.log(req.body);
     console.log(req.body.SongName);
     knex("Songs").insert(req.body).then(songs =>{
-        res.redirect("/")
-    })
+        res.redirect("/");
+    });
 });
 
 app.get("/startover", (req, res) =>{
     res.redirect("/startover")
 });
 
+app.post("/startover", (req, res) => {
+    //first, delete all the records
+    knex("Songs").del().then(songs =>{
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });
+}); 
 
-app.get('/editsong', (req, res) => {
-    res.render('editsong.ejs');
+app.get('/editsong', function(req,res) {
+    res.render('editsong')
 });
 
 
-app.post('/editsong/:id', (req, res) => {
-    console.log(req.body.SongName);
-    knex('Songs').where({SongID: req.body.SongID}).save({
+app.post('/editsong', (req, res) => {
+    console.log(req.body.ArtistID);
+    knex('Songs').where({SongID: req.body.SongID}).update({
+        SongID: req.body.SongID,
         SongName: req.body.SongName,
         ArtistID: req.body.ArtistID,
         YearReleased: req.body.YearReleased}).then(songs => {
         res.redirect('/');
-    });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });;
 });
 
 //trying to update the post method for cancel for edit.ejs
 app.post('/editsong',(req,res) => {
-
-
-
+    res.render('/')
 });
 
 /*
