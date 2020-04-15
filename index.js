@@ -69,7 +69,7 @@ app.get('/editsong', (req, res) => {
 
 app.post('/editsong', (req, res) => {
     console.log(req.body.SongID);
-    knex('Songs').where({SongID: req.body.SongID}).save({
+    knex('Songs').where({SongID: req.body.SongID}).update({
         SongName: req.body.SongName,
         ArtistID: req.body.ArtistID,
         YearReleased: req.body.YearReleased}).then(songs => {
