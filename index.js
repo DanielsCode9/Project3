@@ -58,19 +58,23 @@ app.post("/addsong",(req,res) =>{
     });
 });
 
+
+//startover methods
 app.get("/startover", (req, res) =>{
     res.redirect("/startover")
 });
 
 app.post("/startover", (req, res) => {
     //first, delete all the records
-    knex("Songs").del().then(songs =>{
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err});
-    });
+    console.log(knex("Songs"));
+    // knex("Songs").del().then(songs =>{
+    // }).catch(err => {
+    //     console.log(err);
+    //     res.status(500).json({err});
+    // });
 }); 
 
+//edit song methods
 app.get('/editsong', function(req,res) {
     res.render('editsong')
 });
@@ -89,7 +93,6 @@ app.post('/editsong', (req, res) => {
     });;
 });
 
-//trying to update the post method for cancel for edit.ejs
 app.post('/editsong',(req,res) => {
     res.render('/')
 });
