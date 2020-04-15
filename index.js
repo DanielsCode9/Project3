@@ -58,16 +58,13 @@ app.post("/addsong",(req,res) =>{
     })
 });
 
-app.get("/startover", (req, res) =>{
-    res.redirect("/startover")
-});
-
-/*app.get('/editsong', (req, res) => {
+app.get('/editsong', (req, res) => {
     res.render('editsong');
 });
 
 
-app.post('/editsong/:id', (req, res) => {
+app.post("/editsong", (req, res) => {
+    console.log(req.body.SongID);
     knex('Songs').where({SongID: req.body.SongID}).update({
         SongName: req.body.SongName,
         ArtistID: req.body.ArtistID,
@@ -78,7 +75,7 @@ app.post('/editsong/:id', (req, res) => {
 });
 
 
-
+/*
 app.post('/addBatch', (req, res) => {
     knex('Student').insert(
         [
