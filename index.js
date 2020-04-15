@@ -75,11 +75,11 @@ app.get('/editsong', function(req,res) {
     res.render('editsong')
 });
 
-
 app.post('/editsong', (req, res) => {
     console.log(req.body.ArtistID);
     knex('Songs').where({SongID: req.body.SongID}).update({
         SongID: req.body.SongID,
+
         SongName: req.body.SongName,
         ArtistID: req.body.ArtistID,
         YearReleased: req.body.YearReleased}).then(songs => {
