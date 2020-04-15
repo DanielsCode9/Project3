@@ -37,63 +37,99 @@ app.get("/", (req, res) => {
 
 //needs to be updated for this project
 app.post("/deleteSong/:id", (req, res) => {
-    knex("Songs").where("SongID", req.params.id).del().then(songs =>{
+    knex("Songs").where("SongID", req.params.id).del().then(songs => {
         console.log(req.params.id);
         res.redirect("/");
     }).catch(err => {
         console.log(err);
-        res.status(500).json({err});
+        res.status(500).json({
+            err
+        });
     });
-}); 
+});
+
 
 app.get('/addsong', (req, res) => {
     res.render('addsong');
 });
 
-app.post("/addsong",(req,res) =>{
+app.post("/addsong", (req, res) => {
     console.log(req.body);
     console.log(req.body.SongName);
-    knex("Songs").insert(req.body).then(songs =>{
+    knex("Songs").insert(req.body).then(songs => {
         res.redirect("/");
     });
 });
 
 
 //startover methods
-app.get("/startover", (req, res) =>{
+app.get("/startover", (req, res) => {
     res.redirect("/startover")
 });
 
 app.post("/startover", (req, res) => {
-    //first, delete all the records
-    console.log(knex("Songs"));
-    // knex("Songs").del().then(songs =>{
-    // }).catch(err => {
-    //     console.log(err);
-    //     res.status(500).json({err});
-    // });
-}); 
+    //first, desete all the records
+    knex("Songs").del(),
+
+        knex.schema.createTable('Songs', table => {
+                table.increments('SongID'),
+                table.string('SongName'),
+                table.string('ArtistID'),
+                table.integer('YearReleased')
+        });
+        console.log(Songs);
+
+
+    knex('Songs').insert(
+        [{
+                SongID: "1",
+                SongName: "Bohemian Rhapsody",
+                ArtistID: "QUEEN",
+                YearReleased: "1975"
+            },
+            {
+                SongID: "2",
+                SongName: "Don't Stop Believing",
+                ArtistID: "JOURNEY",
+                YearReleased: "1981"
+            },
+            {
+                SongID: "3",
+                SongName: "Hey Jude",
+                ArtistID: "BEATLES",
+                YearReleased: "1968"
+            }
+        ]
+    ).then(songs => {
+        res.redirect('/')
+    })
+});
 
 //edit song methods
-app.get('/editsong', function(req,res) {
+app.get('/editsong', function (req, res) {
     res.render('editsong')
 });
 
 app.post('/editsong', (req, res) => {
     console.log(req.body.ArtistID);
-    knex('Songs').where({SongID: req.body.SongID}).update({
+    knex('Songs').where({
+        SongID: req.body.SongID
+    }).update({
         SongID: req.body.SongID,
         SongName: req.body.SongName,
         ArtistID: req.body.ArtistID,
-        YearReleased: req.body.YearReleased}).then(songs => {
+        YearReleased: req.body.YearReleased
+    }).then(songs => {
         res.redirect('/');
     }).catch(err => {
         console.log(err);
-        res.status(500).json({err});
+        res.status(500).json({
+            err
+        });
     });;
 });
 
-app.post('/editsong',(req,res) => {
+app.post('/editsong', (req, res) => {
     res.render('/')
 });
 
