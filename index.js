@@ -58,22 +58,32 @@ app.post("/addsong",(req,res) =>{
     })
 });
 
-app.get('/editsong', (req, res) => {
-    res.render('editsong');
+app.get("/startover", (req, res) =>{
+    res.redirect("/startover")
 });
 
 
-app.post("/editsong", (req, res) => {
-    console.log(req.body.SongID);
-    knex('Songs').where({SongID: req.body.SongID}).update({
+app.get('/editsong', (req, res) => {
+    res.render('editsong.ejs');
+});
+
+
+app.post('/editsong/:id', (req, res) => {
+    console.log(req.body.SongName);
+    knex('Songs').where({SongID: req.body.SongID}).save({
         SongName: req.body.SongName,
         ArtistID: req.body.ArtistID,
-        YearReleased: req.body.YearReleased
-    }).then(songs => {
+        YearReleased: req.body.YearReleased}).then(songs => {
         res.redirect('/');
     });
 });
 
+//trying to update the post method for cancel for edit.ejs
+app.post('/editsong',(req,res) => {
+
+
+
+});
 
 /*
 app.post('/addBatch', (req, res) => {
