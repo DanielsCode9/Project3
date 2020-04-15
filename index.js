@@ -24,8 +24,8 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
     knex.select("SongID", "SongName", "ArtistID", "YearReleased").from("Songs").orderBy("SongID").then(songs => {
         res.render("index", {
-            startOver: songs,
-            MusicLibrary: songs
+            startOver: Songs,
+            MusicLibrary: Songs
         });
     }).catch(err => {
         console.log(err);
@@ -48,7 +48,32 @@ app.post("/deleteSong/:id", (req, res) => {
     });
 });
 
+//startover method - I just tried to see if it works. I have not deleted anything, I have just commented out and added my changes.
+app.post('/startover', (req,res)=>{
+knex('Songs').where(
+    [ 'SongID',req.paramas.SongID,
+      'SongName',req.paramas.SongName, 
+      'ArtistID',req.paramas.ArtistID,
+      'YearReleased',req.paramas.YearReleased])
+    .del().then (student =>{
+        res.redirect('/');
+    });
 
+});
+// prof.Anderson used get method to update the table instead of post. So i have changed the code here
+app.get('/startover', (req, res) => {
+    console.log("please work");//kept it for testing
+    knex('Songs').insert(
+        [
+            {SongName: "Bohemian", ArtistID: "QUEEN", YearReleased: "1975"},
+            {SongName: "Don't Stop Believing", ArtistID: "JOURNEY", YearReleased: "1981"},
+            {SongName: "Hey Jude", ArtistID: "BEATLES", YearReleased: "1968"},
+        ]
+    ).then(Songs => {
+        res.redirect('/');
+    });
+});
+//add song methods
 app.get('/addsong', (req, res) => {
     res.render('addsong');
 });
@@ -62,10 +87,13 @@ app.post("/addsong", (req, res) => {
 });
 
 
-//startover methods
-app.get("/startover", (req, res) => {
+//startover methods- In Prof.Anderson videos he has used get method.So,I have updated the code just below the delete method
+
+/*app.get("/startover", (req, res) => {
     res.redirect("/startover")
 });
+
+
 
 app.post("/startover", (req, res) => {
     //first, desete all the records
@@ -103,7 +131,7 @@ app.post("/startover", (req, res) => {
     ).then(songs => {
         res.redirect('/')
     })
-});
+}); */
 
 //edit song methods
 app.get('/editsong', function (req, res) {
@@ -133,19 +161,7 @@ app.post('/editsong', (req, res) => {
     res.render('/')
 });
 
-/*
-app.post('/addBatch', (req, res) => {
-    knex('Student').insert(
-        [
-            {firstName: "Tony", LastName: "Stark", Email: "Y"},
-            {firstName: "Steve", LastName: "Rogers", Email: "Y"},
-           {firstName: "Natsha", LastName: "Romeoa", Email: "N"},
-            {firstName: "Carol", LastName: "Danvers", Email: "N"},
-        ]
-    ).then(student => {
-        res.redirect('/');
-    });
-});*/
+//port
 
 app.listen(port, function () {
     console.log("Music Library listening started");
