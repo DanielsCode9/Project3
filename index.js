@@ -67,9 +67,8 @@ app.get('/editsong', (req, res) => {
     res.render('editsong.ejs');
 });
 
-
-app.post('/editsong/:id', (req, res) => {
-    console.log(req.body.SongName);
+app.post('/editsong', (req, res) => {
+    console.log(req.body.SongID);
     knex('Songs').where({SongID: req.body.SongID}).save({
         SongName: req.body.SongName,
         ArtistID: req.body.ArtistID,
