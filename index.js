@@ -93,10 +93,6 @@ app.post("/addsong", (req, res) => {
     });
 });
 
-//port
-app.listen(port, function () {
-    console.log("Music Library listening started");
-});
 
 // ------- Here's everything about starting over haha ------- //
 
@@ -115,6 +111,12 @@ app.post('/startover', (req, res) => {
         res.redirect('/');
     });
 });
+
+//port
+app.listen(port, function () {
+    console.log("Music Library listening started");
+});
+
 
 /*
 
