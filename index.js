@@ -20,13 +20,11 @@ app.use(bodyParser.urlencoded({
 app.set("view engine", "ejs");
 
 //takes everything from the table and gives it to the ejs file
-//needs to be updated for this project
 app.get("/", (req, res) => {
     knex.select("SongID", "SongName", "ArtistID", "YearReleased").from("Songs").orderBy("SongID").then(songs => {
         res.render("index", {
-            startOver: Songs,
-            MusicLibrary: Songs
-            // what the...
+            startOver: songs,
+            MusicLibrary: songs
         });
     }).catch(err => {
         console.log(err);
@@ -94,6 +92,11 @@ app.post("/addsong", (req, res) => {
 });
 
 
+//port
+app.listen(port, function () {
+    console.log("Music Library listening");
+});
+
 // ------- Here's everything about starting over haha ------- //
 
 app.post('/startover', (req, res) => {
@@ -111,12 +114,6 @@ app.post('/startover', (req, res) => {
         res.redirect('/');
     });
 });
-
-//port
-app.listen(port, function () {
-    console.log("Music Library listening");
-});
-
 
 /*
 
