@@ -114,7 +114,7 @@ app.post('/startover', (req, res) => {
 
 //port
 app.listen(port, function () {
-    console.log("Music Library listening started");
+    console.log("Music Library listening");
 });
 
 
