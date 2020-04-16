@@ -6,6 +6,15 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 40px;
   }
+
+  .subheader {
+    padding: 5px;
+    text-align: center;
+    background: #0d1104;
+    color: aqua;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+  }
   
   .right {
       position: absolute;
@@ -21,6 +30,20 @@
       padding: 10px;
     }
   
+    .right2 {
+      position: absolute;
+      right: 100px;
+      width: 150px;
+      padding: 10px;
+    }
+
+    .left2 {
+      position: absolute;
+      left: 100px;
+      width: 150px;
+      padding: 10px;
+    }
+
   .body {
       background-color: rgb(217, 243, 243);
       color: rgb(36, 34, 34);

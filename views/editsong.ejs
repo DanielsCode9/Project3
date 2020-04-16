@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Song</title>
+    <link href="../style.css" rel="stylesheet">
 </head>
 <body>
-    <form action="/editsong" method="post">
-        <label for="SongID">Enter Song ID:</label>
-        <input id="SongID" type="text" name="SongID">
-        <br>
-        <label for="SongName">Enter Song Name:</label>
+    <div class="subheader">
+        <img src="image.png" class="left2" alt="Music Notes">
+        <img src="image.png" class="right2" alt="Music Notes">
+        <h1><b>Update Song</b></h1>
+        <p><i>Update the song information then click save. Cancel to delete changes.</i></p>
+    </div>
+    <div class="body">
+        <form action="/editsong" method="post">
+            <label for="SongID">Enter Song ID:</label>
+            <input id="SongID" type="text" name="SongID">
+            <br>
+            <label for="SongName">Enter Song Name:</label>
 
-        <input id="SongName" type="text" name="SongName">
-        <br>
-        <label for="ArtistID">Enter Artist Name:</label>
-        <input id="ArtistID" type="text" name="ArtistID">
-        <br>
-        <label for="YearReleased">Enter Year Realeased:</label>
-        <input id="YearReleased" type="text" name="YearReleased">
-        <br>
-<!-- im unable to load the page on my computer.I havent tested it yet-->
-        <input type="submit" value="Save">
-        <input type="submit" value="Cancel">
-    </form>
+            <input id="SongName" type="text" name="SongName">
+            <br>
+            <label for="ArtistID">Enter Artist Name:</label>
+            <input id="ArtistID" type="text" name="ArtistID">
+            <br>
+            <label for="YearReleased">Enter Year Realeased:</label>
+            <input id="YearReleased" type="text" name="YearReleased">
+            <br>
+    <!-- im unable to load the page on my computer.I havent tested it yet-->
+            <input class="button" type="submit" value="Save">
+            <input class="button" type="submit" value="Cancel">
+        </form>
+    </div>
 </body>
 </html>
