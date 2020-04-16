@@ -7,48 +7,58 @@
 </head>
 
 <body>
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>SongID</th>
-                <th>SongName</th>
-                <th>ArtistID</th>
-                <th>YearReleased</th>
-                <th></th>
-            </tr>
-        </thead>
+    <div class="header">
+        <img src="image.png" class="left" alt="Music Notes">
+        <img src="image.png" class="right" alt="Music Notes">
+        <h1><b>Music Store</b></h1>
+        <p><i>Add and Delete Songs!</i></p>
+    </div>
+    <div class="body"><br>
+        <img src="musicnotes.png" class="left" alt="Music Notes">
+        <img src="musicnotes.png" class="right" alt="Music Notes">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>SongID</th>
+                    <th>SongName</th>
+                    <th>ArtistID</th>
+                    <th>YearReleased</th>
+                    <th></th>
+                </tr>
+            </thead>
 
-        <tbody>
-            <% for (var iCount = 0; iCount < MusicLibrary.length; iCount++) {%>
-            <tr>
-                <td>
-                    <form action="/deleteSong/<%= MusicLibrary[iCount].SongID %>" method="post">
-                        <input type="submit" name="delete" value="Delete">
-                    </form>
+            <tbody>
+                <% for (var iCount = 0; iCount < MusicLibrary.length; iCount++) {%>
+                <tr>
+                    <td>
+                        <form action="/deleteSong/<%= MusicLibrary[iCount].SongID %>" method="post">
+                            <input class="button" type="submit" name="delete" value="Delete">
+                        </form>
 
-                </td>
-                <td><%= MusicLibrary[iCount].SongID %></td>
-                <td><%= MusicLibrary[iCount].SongName %></td>
-                <td><%= MusicLibrary[iCount].ArtistID %></td>
-                <td><%= MusicLibrary[iCount].YearReleased %></td>
-                <td>
-                    <form action="/editsong" method="get">
-                        <input type="submit" name="edit" value="Edit">
-                    </form>
-                </td>
-            </tr>
-            <% }%>
-        </tbody>
-    </table>
-    <br><br>
-    <form action="/addsong" method="get">
-        <input type="submit" name="addSong" value="Add Song">
-    </form>
+                    </td>
+                    <td><%= MusicLibrary[iCount].SongID %></td>
+                    <td><%= MusicLibrary[iCount].SongName %></td>
+                    <td><%= MusicLibrary[iCount].ArtistID %></td>
+                    <td><%= MusicLibrary[iCount].YearReleased %></td>
+                    <td>
+                        <form action="/editsong" method="get">
+                            <input type="submit" name="edit" value="Edit">
+                        </form>
+                    </td>
+                </tr>
+                <% }%>
+            </tbody>
+        </table>
+        <br><br>
+        <form action="/addsong" method="get">
+            <input class="button" type="submit" name="addSong" value="Add Song">
+        </form>
 
-    <form action="/startover" method="post">
-        <input type="submit" name="startOver" value="Start Over">
-    </form>
+        <form action="/startover" method="post">
+            <input class="button" type="submit" name="startOver" value="Start Over">
+        </form>
+    </div>
 </body>
 
 </html>
