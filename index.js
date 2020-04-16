@@ -24,8 +24,8 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
     knex.select("SongID", "SongName", "ArtistID", "YearReleased").from("Songs").orderBy("SongID").then(songs => {
         res.render("index", {
-            startOver: Songs,
-            MusicLibrary: Songs
+            startOver: songs,
+            MusicLibrary: songs
             // what the...
         });
     }).catch(err => {
