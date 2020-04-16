@@ -1,0 +1,36 @@
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #0d1104;
+    color: goldenrod;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+  }
+  
+  .right {
+      position: absolute;
+      right: 100px;
+      width: 300px;
+      padding: 10px;
+    }
+  
+  .left {
+      position: absolute;
+      left: 100px;
+      width: 300px;
+      padding: 10px;
+    }
+  
+  .body {
+      background-color: goldenrod;
+      height: 800px;
+      text-align: center;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 20px;
+    }
+  
+  .button {
+      padding: 10px 40px;
+      background-color: black;
+      color: white;
+    }
