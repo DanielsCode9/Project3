@@ -30,6 +30,20 @@
       padding: 10px;
     }
   
+    .right2 {
+      position: absolute;
+      right: 100px;
+      width: 150px;
+      padding: 10px;
+    }
+
+    .left2 {
+      position: absolute;
+      left: 100px;
+      width: 150px;
+      padding: 10px;
+    }
+
   .body {
       background-color: rgb(217, 243, 243);
       color: rgb(36, 34, 34);
