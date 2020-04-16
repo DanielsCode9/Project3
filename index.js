@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-//const publicDir = require("path").join(__dirname,"/public");
+const publicDir = require("path").join(__dirname,"/public");
 const bodyParser = require("body-parser");
 const port = 3000;
 const knex = require("knex")({
@@ -13,7 +13,7 @@ const knex = require("knex")({
 });
 
 //public folder
-//app.use(express.static(publicDir));
+app.use(express.static(publicDir));
 
 //parse req
 app.use(bodyParser.urlencoded({
