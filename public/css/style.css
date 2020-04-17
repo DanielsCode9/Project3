@@ -60,14 +60,9 @@
       font-size: medium;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
+ 
 
-    .table
-    {
-      align-items: center;
-      text-align: center;
-    }
-    h2
-    {
-      font-weight: bold;
-      font-style: italic;
-    }
+   /* css for the table*/
+  .table
+{
+    align-items: center;
