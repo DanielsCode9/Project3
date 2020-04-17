@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const publicDir = require("path").join(__dirname,"/public");
+const publicDir = require("path").join(__dirname, "/public");
 const bodyParser = require("body-parser");
 const port = 3000;
 const knex = require("knex")({
@@ -57,39 +57,49 @@ app.get('/editsong', function (req, res) {
     res.render('editsong')
 });
 
-// app.post('/editsong/:id', (req, res) => {
-//     knex('Songs').where({
-//         SongID: req.body.SongID
-//     }).update({
-//         SongID: req.body.SongID,
+app.post('/editsong', (req, res) => {
+    knex('Songs').where({
+        SongID: req.body.SongID
+    }).update({
+        SongID: req.body.SongID,
+        SongName: req.body.SongName,
+        ArtistID: req.body.ArtistID,
+        YearReleased: req.body.YearReleased
+    }).then(Songs => {
+        // again changed the variable name to MusicLibrary instead of songs
+        res.redirect('/');
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            err
+        });
+    });;
+});
+
+// app.get("/editsong/:id", (req, res) => {
+//     knex.select("SongID", "SongName", "ArtistID", "YearReleased")
+//         .from("Songs").where("SongID", req.params.id)
+//         .then(songs => {
+//             res.render("editsong", {
+//                 MusicLibrary: songs
+//             });
+//         }).catch(err => {
+//             console.log(err);
+//             res.status(500).json({
+//                 err
+//             });
+//         });
+// });
+
+// app.post("/editsong", (req, res) => {
+//     knex("Songs").where("SongID", req.body.SongID).update({
 //         SongName: req.body.SongName,
 //         ArtistID: req.body.ArtistID,
 //         YearReleased: req.body.YearReleased
-//     }).then(MusicLibrary => {
-//         // again changed the variable name to MusicLibrary instead of songs
-//         res.redirect('/');
-//     }).catch(err => {
-//         console.log(err);
-//         res.status(500).json({
-//             err
-//         });
-//     });;
+//     }).then(songs => {
+//         res.redirect("/");
+//     });
 // });
-
-app.get("/editsong/:id", (req, res) => {
-    knex.select("SongID", "SongName", "ArtistID", "YearReleased")
-        .from("Songs").where("SongID", req.params.id)
-        .then(songs => {
-            res.render("editsong", {
-                songdata: songs
-            });
-        }).catch(err => {
-            console.log(err);
-            res.status(500).json({
-                err
-            });
-        });
-});
 
 //add song methods
 app.get('/addsong', (req, res) => {
