@@ -7,7 +7,7 @@
     <title>Add Song</title>
     <link href="/css/style.css" rel="stylesheet">
 </head>
-
+<!-- this is where the add song page comes from -->
 <body>
     <div class="subheader">
         <img src="/images/image.png" class="left2" alt="Music Notes">
@@ -16,6 +16,7 @@
         <p><i>Enter the song information then click save.</i></p>
     </div>
     <div class="body">
+        <!-- field location with user input text boxes -->
         <form action="/addsong" method="post">
             <label for="SongName">Enter Song Name:</label>
             <input id="SongName" type="text" name="SongName">
@@ -26,9 +27,6 @@
             <label for="YearReleased">Enter Year Released:</label>
             <input id="YearReleased" type="text" name="YearReleased">
             <br>
-            <!--<label for="Email">Receive Emails? </label>
-            <input id="Email" type="checkbox" name="Email" value="Y" checked>
-            <br>-->
             <input class="button" type="submit" value="Save">
         </form>
     </div>

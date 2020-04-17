@@ -1,3 +1,5 @@
+// declare and insert all programs, libraries, and variables
+
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -38,10 +40,9 @@ app.get("/", (req, res) => {
     });
 });
 
-//needs to be updated for this project
+// deletes the song
 app.post("/deleteSong/:id", (req, res) => {
     knex("Songs").where("SongID", req.params.id).del().then(MusicLibrary => {
-        // changed the variable from songs to MusicLibrary
         console.log(req.params.id);
         res.redirect("/");
     }).catch(err => {
@@ -66,7 +67,6 @@ app.post('/editsong', (req, res) => {
         ArtistID: req.body.ArtistID,
         YearReleased: req.body.YearReleased
     }).then(Songs => {
-        // again changed the variable name to MusicLibrary instead of songs
         res.redirect('/');
     }).catch(err => {
         console.log(err);
@@ -75,31 +75,6 @@ app.post('/editsong', (req, res) => {
         });
     });;
 });
-
-// app.get("/editsong/:id", (req, res) => {
-//     knex.select("SongID", "SongName", "ArtistID", "YearReleased")
-//         .from("Songs").where("SongID", req.params.id)
-//         .then(songs => {
-//             res.render("editsong", {
-//                 MusicLibrary: songs
-//             });
-//         }).catch(err => {
-//             console.log(err);
-//             res.status(500).json({
-//                 err
-//             });
-//         });
-// });
-
-// app.post("/editsong", (req, res) => {
-//     knex("Songs").where("SongID", req.body.SongID).update({
-//         SongName: req.body.SongName,
-//         ArtistID: req.body.ArtistID,
-//         YearReleased: req.body.YearReleased
-//     }).then(songs => {
-//         res.redirect("/");
-//     });
-// });
 
 //add song methods
 app.get('/addsong', (req, res) => {
@@ -121,24 +96,7 @@ app.listen(port, function () {
     console.log("Music Library listening");
 });
 
-// ------- Here's everything about starting over haha ------- //
-
-// app.post('/startover', (req, res) => {
-//     knex('Songs').del(req.body),
-//     // .where('SongID', true).del(),
-//     // .del(),
-//     // .where(req.body).del(),
-//     knex('Songs').insert(
-//         [
-//             {SongName: "Bohemian", ArtistID: "QUEEN", YearReleased: "1975"},
-//             {SongName: "Don't Stop Believing", ArtistID: "JOURNEY", YearReleased: "1981"},
-//             {SongName: "Hey Jude", ArtistID: "BEATLES", YearReleased: "1968"}, 
-//         ]
-//     ).then(MusicLibrary => {
-//         res.redirect('/');
-//     });
-// });
-
+//startover method
 app.get("/startover", (req, res) => {
     res.redirect("/startover")
 });
@@ -148,7 +106,7 @@ app.post("/StartOver/", (req, res) => {
     knex("Songs").del().then(MusicLibrary => {
         knex("sqlite_sequence").where("name", "=", "Songs").update("seq", "0").then(songs => {
             knex("Songs").insert([{
-
+// puts the original songs back in place with the inital ID's attached
                     SongName: "Bohemian",
                     ArtistID: "QUEEN",
                     YearReleased: "1975"
@@ -169,80 +127,3 @@ app.post("/StartOver/", (req, res) => {
         })
     })
 });
-
-/*
-//startover method - I just tried to see if it works. I have not deleted anything, I have just commented out and added my changes.
-app.post('/startover', (req,res)=>{
-    knex('Songs')
-        // [ SongID,req.body.SongID,
-        //   SongName,req.body.SongName, 
-        //   ArtistID,req.body.ArtistID,
-        //   YearReleased,req.body.YearReleased]
-        .del().then (MusicLibrary =>{
-            res.redirect('/');
-        });
-    
-    });
-   
-    // prof.Anderson used get method to update the table instead of post. So i have changed the code here
-    app.get('/startover', (req, res) => {
-      console.log("please work");//kept it for testing
-        knex('Songs').insert(
-            [
-                {SongName: "Bohemian", ArtistID: "QUEEN", YearReleased: "1975"},
-                {SongName: "Don't Stop Believing", ArtistID: "JOURNEY", YearReleased: "1981"},
-                {SongName: "Hey Jude", ArtistID: "BEATLES", YearReleased: "1968"},
-            ]
-        ).then(Songs => {
-            res.redirect('/');
-        });
-    });
-        
-    
-    //startover methods- In Prof.Anderson videos he has used get method.So,I have updated the code just below the delete method
-    
-    
-   
-    app.get("/startover", (req, res) => {
-        res.redirect("/startover")
-    });
-    
-    
-    
-    app.post("/startover", (req, res) => {
-        //first, desete all the records
-        knex("Songs").del(),
-    
-            knex.schema.createTable('Songs', table => {
-                    table.increments('SongID'),
-                    table.string('SongName'),
-                    table.string('ArtistID'),
-                    table.integer('YearReleased');
-            });
-            console.log(Songs);
-    
-    
-        knex('Songs').insert(
-            [{
-                    SongID: "1",
-                    SongName: "Bohemian Rhapsody",
-                    ArtistID: "QUEEN",
-                    YearReleased: "1975"
-                },
-                {
-                    SongID: "2",
-                    SongName: "Don't Stop Believing",
-                    ArtistID: "JOURNEY",
-                    YearReleased: "1981"
-                },
-                {
-                    SongID: "3",
-                    SongName: "Hey Jude",
-                    ArtistID: "BEATLES",
-                    YearReleased: "1968"
-                }
-            ]
-        ).then(songs => {
-            res.redirect('/')
-        })
-    }); */

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- this is the main page for music and tables-->
 <head>
     <title>Music Store</title>
     <link href="/css/style.css" rel="stylesheet" type="text/css">
@@ -14,8 +15,7 @@
         <h2>Your World of Escape</h2>
     </div>
     <div class="body"><br>
-      <!--  <img src="/images/musicnotes.png" class="left" alt="Music Notes">
-        <img src="/images/musicnotes.png" class="right" alt="Music Notes">-->
+      <!-- space that the table occupies, and the words appearing in the table-->
         <table align = "center" class="table">
             <thead>
                 <tr>
@@ -27,7 +27,7 @@
                     <th></th>
                 </tr>
             </thead>
-
+<!-- Where our delete song button comes from, as well as the edit song button-->
             <tbody>
                 <% for (var iCount = 0; iCount < MusicLibrary.length; iCount++) {%>
                 <tr>
@@ -51,6 +51,7 @@
             </tbody>
         </table>
         <br><br>
+        <!-- start over and add song to playlist options -->
         <form action="/addsong" method="get">
             <input class="button" type="submit" name="addSong" value="Add Song">
         </form>

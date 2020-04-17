@@ -6,6 +6,7 @@
     <title>Update Song</title>
     <link href="/css/style.css" rel="stylesheet">
 </head>
+<!-- page to edit song -->
 <body>
     <div class="subheader">
         <img src="/images/image.png" class="left2" alt="Music Notes">
@@ -14,6 +15,7 @@
         <p><i>Update the song information then click save. Cancel to delete changes.</i></p>
     </div>
     <div class="body">
+        <!-- fields to edit and use user input -->
         <form action="/editsong" method="post">
             <label for="SongID">Enter Song ID:</label>
             <input id="SongID" type="text" name="SongID">
@@ -27,7 +29,6 @@
             <label for="YearReleased">Enter Year Realeased:</label>
             <input id="YearReleased" type="text" name="YearReleased">
             <br>
-    <!-- im unable to load the page on my computer.I havent tested it yet-->
             <input class="button" type="submit" value="Save">
             <input class="button" type="submit" value="Cancel">
         </form>
